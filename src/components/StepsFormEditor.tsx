@@ -50,7 +50,7 @@ export function StepsFormEditor({ steps, setSteps, }: { steps: ICocktailStep[]; 
 	};
 
 	return (
-		<div>
+		<>
 			<h3>Steps</h3>
 			{steps.map((step, idx) => (
 				<div
@@ -76,6 +76,6 @@ export function StepsFormEditor({ steps, setSteps, }: { steps: ICocktailStep[]; 
 			<button type="button" onClick={addStep}>
 				+ Add Step
 			</button>
-		</div>
+		</>
 	);
 }

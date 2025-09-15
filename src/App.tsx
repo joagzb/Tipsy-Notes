@@ -2,7 +2,7 @@ import { CocktailForm } from "./components/CocktailForm";
 import { CocktailList } from "./components/CocktailList";
 import type { ICocktail } from "./models/ICocktail";
 import { cocktails as data } from "./repository/cocktails";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function App() {
 
@@ -12,9 +12,9 @@ function App() {
 		setCocktails(data);
 	}, [])
 
-	const createCocktail = (newCocktail: ICocktail) => {
-		setCocktails([...cocktails, newCocktail])
-	}
+	const createCocktail = useCallback((newCocktail: ICocktail) => {
+		setCocktails((prev) => [...prev, newCocktail]);
+	}, [setCocktails]);
 
 	return (
 		<>

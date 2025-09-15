@@ -11,11 +11,7 @@ export function IngredientsFormEditor({ ingredients, setIngredients }: { ingredi
 		]);
 	};
 
-	const updateIngredient = (
-		index: number,
-		field: keyof ICocktailIngredient,
-		value: string
-	): void => {
+	const updateIngredient = (index: number, field: keyof ICocktailIngredient, value: string): void => {
 		setIngredients((existingIngredients) => {
 			const existing = [...existingIngredients];
 
@@ -40,7 +36,7 @@ export function IngredientsFormEditor({ ingredients, setIngredients }: { ingredi
 	};
 
 	return (
-		<div>
+		<>
 			<h3>Ingredients</h3>
 			{ingredients.map((ingredient, idx) => (
 				<div key={`ingr-${idx}`}>
@@ -72,6 +68,6 @@ export function IngredientsFormEditor({ ingredients, setIngredients }: { ingredi
 			<button type="button" onClick={addIngredient}>
 				+ Add Ingredient
 			</button>
-		</div>
+		</>
 	);
 }

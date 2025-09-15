@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { type RecipeTag, type MeasurementType, RECIPE_TAGS } from "../models/Types";
 import type { ICocktail, ICocktailIngredient, ICocktailStep } from "../models/ICocktail";
 import { IngredientsFormEditor } from "./IngredientsFormEditor";
@@ -18,20 +18,23 @@ export function CocktailForm({ createCocktail }: { createCocktail: CallableFunct
 		{ order: 1, description: "" },
 	]);
 
-	const toRecipeTags = (tag: string): RecipeTag[] => {
+	const parsedTags = useMemo<RecipeTag[]>(() => {
 		const set = new Set(RECIPE_TAGS);
-
-		return tag.split(",").map(s => s.trim().toLowerCase()).filter((s): s is RecipeTag => set.has(s as RecipeTag));
-	};
+		return tags.split(",")
+			.map((s) => s.trim().toLowerCase())
+			.filter((s): s is RecipeTag => set.has(s as RecipeTag));
+	}, [tags]);
 
 	const resetForm = (): void => {
 		setTitle("");
 		setAuthor("");
 		setGlass("");
 		setTags("");
+
 		setIngredients([
 			{ name: "", units: "", measurementType: "oz" as MeasurementType },
 		]);
+
 		setSteps([
 			{ order: 1, description: "" }
 		]);
@@ -39,7 +42,6 @@ export function CocktailForm({ createCocktail }: { createCocktail: CallableFunct
 
 	const onSubmitBtnClick = (e: React.FormEvent): void => {
 		e.preventDefault();
-		console.log({ title, author, glass, tags, ingredients: ingredients, steps: steps });
 
 		const newCocktail: ICocktail = {
 			id: crypto.randomUUID(),
@@ -47,19 +49,18 @@ export function CocktailForm({ createCocktail }: { createCocktail: CallableFunct
 			author: author,
 			date: (new Date()),
 			glass: glass,
-			tags: toRecipeTags(tags),
+			tags: parsedTags,
 			ingredients: ingredients,
 			steps: steps,
 		}
 
 		createCocktail(newCocktail);
-
 		resetForm();
 	};
 
 
 	return (
-		<div>
+		<>
 			<form onSubmit={onSubmitBtnClick}>
 				<input
 					type="text"
@@ -96,11 +97,10 @@ export function CocktailForm({ createCocktail }: { createCocktail: CallableFunct
 				/>
 
 				<IngredientsFormEditor ingredients={ingredients} setIngredients={setIngredients} />
-				<StepsFormEditor steps={steps} setSteps={setSteps}/>
-
+				<StepsFormEditor steps={steps} setSteps={setSteps} />
 
 				<button type="submit">Submit</button>
 			</form>
-		</div>
+		</>
 	);
 }

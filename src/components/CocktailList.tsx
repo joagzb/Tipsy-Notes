@@ -4,12 +4,12 @@ import { CocktailCard } from "./CocktailCard";
 export function CocktailList({ cocktails }: { cocktails: ICocktail[] }) {
 
 	return (
-		<div>
+		<>
 			{
 				cocktails.map((cocktail) => (
-					<CocktailCard cocktail={cocktail} />
+					<CocktailCard key={cocktail.id} cocktail={cocktail} />
 				))
 			}
-		</div>
+		</>
 	);
 }
