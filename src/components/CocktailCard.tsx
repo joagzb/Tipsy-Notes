@@ -14,7 +14,7 @@ export function CocktailCard({ cocktail }: { cocktail: ICocktail }) {
 			<ul>
 				{
 					cocktail.ingredients.map((element, idx) => (
-						<li key={`ing-${idx}`}>{element.name} {element.units} {element.measurementType}</li>
+						<li key={`${cocktail.id}-ingredient-${idx}`}>{element.name} {element.units} {element.measurementType}</li>
 					))
 				}
 			</ul>
@@ -23,7 +23,7 @@ export function CocktailCard({ cocktail }: { cocktail: ICocktail }) {
 			<ol>
 				{
 					orderedSteps.map((step) => (
-						<li key={`step-${step.order}`}>{step.description}</li>
+						<li key={`${cocktail.id}-step-${step.order}`}>{step.description}</li>
 					))
 				}
 			</ol>

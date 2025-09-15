@@ -1,7 +1,9 @@
-import type { ICocktail } from "../models/ICocktail";
+import { useContext } from "react";
 import { CocktailCard } from "./CocktailCard";
+import { AppContext } from "../context/CocktailContext";
 
-export function CocktailList({ cocktails }: { cocktails: ICocktail[] }) {
+export function CocktailList() {
+	const { cocktails } = useContext(AppContext);
 
 	return (
 		<>

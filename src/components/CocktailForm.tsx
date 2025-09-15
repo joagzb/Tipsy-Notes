@@ -1,10 +1,13 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useContext } from "react";
 import { type RecipeTag, type MeasurementType, RECIPE_TAGS } from "../models/Types";
 import type { ICocktail, ICocktailIngredient, ICocktailStep } from "../models/ICocktail";
 import { IngredientsFormEditor } from "./IngredientsFormEditor";
 import { StepsFormEditor } from "./StepsFormEditor";
+import { AppContext } from "../context/CocktailContext";
 
-export function CocktailForm({ createCocktail }: { createCocktail: CallableFunction }) {
+export function CocktailForm() {
+	const { createCocktail } = useContext(AppContext);
+
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [glass, setGlass] = useState("");
