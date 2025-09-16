@@ -1,11 +1,20 @@
-import { useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 import type { ICocktail } from "../models/ICocktail";
+import { AppContext } from "../context/CocktailContext";
 
 export function CocktailCard({ cocktail }: { cocktail: ICocktail }) {
+	const context = useContext(AppContext);
+
+	const [liked, setLiked] = useState(false);
 
 	const orderedSteps = useMemo(() => {
 		return [...cocktail.steps].sort((a, b) => a.order - b.order);
 	}, [cocktail.steps]);
+
+	const onLikeBtnClick = () => {
+		setLiked(!liked);
+		context.onLikeToggleCocktail(cocktail.id, !liked);
+	};
 
 	return (
 		<div>
@@ -27,6 +36,7 @@ export function CocktailCard({ cocktail }: { cocktail: ICocktail }) {
 					))
 				}
 			</ol>
+			<button onClick={onLikeBtnClick}>{liked ? "Liked" : "Like"}</button>
 		</div>
 	);
 }
