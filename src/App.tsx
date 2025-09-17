@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { CocktailForm } from "./components/CocktailForm";
 import { CocktailList } from "./components/CocktailList";
 
@@ -24,8 +24,12 @@ function App() {
 
 	return (
 		<>
-			<CocktailForm />
-			<CocktailList />
+			<Routes>
+				<Route path="*" element={<CocktailList />} />
+				<Route path="home" element={<CocktailList />} />
+				<Route path="cocktails" element={<CocktailList />} />
+				<Route path="cocktails/new" element={<CocktailForm />} />
+			</Routes>
 		</>
 	)
 }
