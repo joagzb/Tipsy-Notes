@@ -9,6 +9,7 @@ export function CocktailForm() {
 	const { createCocktail } = useContext(AppContext);
 
 	const [title, setTitle] = useState("");
+	const [description, setDescription] = useState("");
 	const [author, setAuthor] = useState("");
 	const [glass, setGlass] = useState("");
 	const [tags, setTags] = useState("");
@@ -30,6 +31,7 @@ export function CocktailForm() {
 
 	const resetForm = (): void => {
 		setTitle("");
+		setDescription("");
 		setAuthor("");
 		setGlass("");
 		setTags("");
@@ -49,12 +51,14 @@ export function CocktailForm() {
 		const newCocktail: ICocktail = {
 			id: crypto.randomUUID(),
 			title: title,
+			description: description,
 			author: author,
 			date: (new Date()),
 			glass: glass,
 			tags: parsedTags,
 			ingredients: ingredients,
 			steps: steps,
+			likes: 0,
 		}
 
 		createCocktail(newCocktail);
@@ -73,6 +77,14 @@ export function CocktailForm() {
 					value={title}
 					autoFocus
 					onChange={(e) => setTitle(e.target.value)}
+				/>
+				<input
+					type="text"
+					placeholder="description"
+					minLength={0}
+					maxLength={255}
+					value={description}
+					onChange={(e) => setDescription(e.target.value)}
 				/>
 				<input
 					type="text"
