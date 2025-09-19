@@ -6,6 +6,7 @@ export interface ICocktail {
 		description: string,
     author: string,
     date: Date,
+		imageUrl: string,
     glass: string,
     tags: RecipeTag[],
     ingredients: ICocktailIngredient[]

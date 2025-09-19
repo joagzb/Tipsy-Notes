@@ -7,6 +7,7 @@ export const cocktails: ICocktail[] = [
 		description: "A refreshing Cuban classic made with rum, lime juice and simple syrup, served in a martini glass.",
 		author: "Joaquin Gonzalez Budino",
 		date: new Date("2025-08-05"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "martini",
 		tags: ["modern", "craft", "sour", "dessert"],
 		ingredients: [
@@ -32,6 +33,7 @@ export const cocktails: ICocktail[] = [
 		description: "A refreshing Cuban classic made with rum, lime juice and simple syrup, served in a martini glass.",
 		author: "Jennings Cox",
 		date: new Date("1898-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "martini",
 		tags: ["classic", "citrus", "refreshing"],
 		ingredients: [
@@ -54,6 +56,7 @@ export const cocktails: ICocktail[] = [
 		description: "A bitter-sweet Italian aperitif with equal parts gin, Campari, and sweet vermouth, garnished with orange.",
 		author: "Count Camillo Negroni",
 		date: new Date("1919-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "old fashioned",
 		tags: ["classic", "bitter", "aperitif", "strong"],
 		ingredients: [
@@ -75,6 +78,7 @@ export const cocktails: ICocktail[] = [
 		description: "A fizzy and refreshing gin-based cocktail with lemon juice, sugar, and soda water, served in a tall glass.",
 		author: "Jerry Thomas",
 		date: new Date("1876-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "Collins",
 		tags: ["classic", "refreshing", "fizz", "citrus"],
 		ingredients: [
@@ -97,6 +101,7 @@ export const cocktails: ICocktail[] = [
 		description: "A bright and silky gin cocktail with lemon, sugar and optional egg white foam.",
 		author: "Jerry Thomas",
 		date: new Date("1862-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "old fashioned",
 		tags: ["classic", "sour", "citrus"],
 		ingredients: [
@@ -119,6 +124,7 @@ export const cocktails: ICocktail[] = [
 		description: "A timeless highball of gin and tonic water, light and refreshing with lime garnish.",
 		author: "British officers / Unknown",
 		date: new Date("1868-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "highball",
 		tags: ["classic", "refreshing", "fizz"],
 		ingredients: [
@@ -140,6 +146,7 @@ export const cocktails: ICocktail[] = [
 		description: "A floral gin cocktail with lemon, maraschino liqueur and crème de violette, finished with a cherry.",
 		author: "Hugo Ensslin",
 		date: new Date("1916-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "cocktail",
 		tags: ["classic", "floral", "citrus", "sour"],
 		ingredients: [
@@ -161,6 +168,7 @@ export const cocktails: ICocktail[] = [
 		description: "A classic sour cocktail with whiskey, lemon juice, sugar and egg white, smooth and refreshing.",
 		author: "Jerry Thomas",
 		date: new Date("1862-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "old fashioned",
 		tags: ["classic", "sour", "strong"],
 		ingredients: [
@@ -183,6 +191,7 @@ export const cocktails: ICocktail[] = [
 		description: "A timeless cocktail of bourbon, sugar and bitters, served over ice with orange and cherry garnish.",
 		author: "Jerry Thomas",
 		date: new Date("1880-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "old fashioned",
 		tags: ["classic", "strong", "sweet"],
 		ingredients: [
@@ -205,6 +214,7 @@ export const cocktails: ICocktail[] = [
 		description: "A Scotch-based Manhattan-style cocktail with sweet vermouth and bitters, elegant and smooth.",
 		author: "Unnamed bartender at the Waldorf-Astoria",
 		date: new Date("1894-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "cocktail",
 		tags: ["classic", "strong", "dry"],
 		ingredients: [
@@ -226,6 +236,7 @@ export const cocktails: ICocktail[] = [
 		description: "A refreshing mojito variation with Captain Morgan White Rum, lime, mint and soda water.",
 		author: "Traditional Cuban / Unknown",
 		date: new Date("1927-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "collins",
 		tags: ["classic", "refreshing", "herbal", "citrus"],
 		ingredients: [
@@ -250,6 +261,7 @@ export const cocktails: ICocktail[] = [
 		description: "A Cuban classic combining rum, cola, lime and a touch of bitters.",
 		author: "American Bar, Havana",
 		date: new Date("1902-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "highball",
 		tags: ["classic", "refreshing", "fizz", "sweet"],
 		ingredients: [
@@ -273,6 +285,7 @@ export const cocktails: ICocktail[] = [
 		description: "A premium margarita with Don Julio tequila, triple sec and lime juice, served with a salted rim.",
 		author: "Carlos “Danny” Herrera",
 		date: new Date("1938-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "margarita",
 		tags: ["classic", "citrus"],
 		ingredients: [
@@ -293,6 +306,7 @@ export const cocktails: ICocktail[] = [
 		description: "A colorful tequila cocktail with orange juice and grenadine, creating a sunrise effect.",
 		author: "Bobby Lozoff & Billy Rice",
 		date: new Date("1972-01-01"),
+		imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
 		glass: "highball",
 		tags: ["classic", "fruity", "sweet", "citrus"],
 		ingredients: [

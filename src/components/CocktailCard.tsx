@@ -1,100 +1,91 @@
-import { useContext, useMemo, useState } from "react";
 import type { ICocktail } from "../models/ICocktail";
-import { AppContext } from "../context/CocktailContext";
-import { Heart, HeartFill } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 export function CocktailCard({ cocktail }: { cocktail: ICocktail }) {
-	const context = useContext(AppContext);
-
-	const [liked, setLiked] = useState(false);
-
-	const orderedSteps = useMemo(() => {
-		return [...cocktail.steps].sort((a, b) => a.order - b.order);
-	}, [cocktail.steps]);
-
-	const onLikeBtnClick = () => {
-		setLiked(!liked);
-		context.onLikeToggleCocktail(cocktail.id, !liked);
-	};
+	const navigate = useNavigate();
+	
+	const onCardClick = () => navigate(`/cocktails/${cocktail.id}`);
 
 	return (
-		<>
-			<div className="max-w-[85rem] px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14 mx-auto">
-				<div className="md:grid md:grid-cols-2 md:items-stretch md:gap-6 xl:gap-12">
+		<div onClick={onCardClick}
+		className="group relative overflow-hidden
+        bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20
+        border-2 border-amber-200 dark:border-amber-800
+        rounded-3xl shadow-xl hover:shadow-2xl
+        transition-all duration-500 ease-out
+        hover:scale-[1.02]">
 
-					<div className="px-0 sm:px-6 lg:px-8 ">
-						<div className="h-64 sm:h-72 md:h-[80dvh] flex flex-col bg-[url('https://images.unsplash.com/photo-1462917882517-e150004895fa?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat rounded-2xl">
-							<div className="mt-auto w-2/3 md:max-w-lg ps-5 pb-5 md:ps-10 md:pb-10" />
+			<div className="absolute top-4 left-4 w-8 h-8 border-l-4 border-t-4 border-amber-400 rounded-tl-2xl opacity-60" />
+			<div className="absolute top-4 right-4 w-8 h-8 border-r-4 border-t-4 border-amber-400 rounded-tr-2xl opacity-60" />
+			<div className="absolute bottom-4 left-4 w-8 h-8 border-l-4 border-b-4 border-amber-400 rounded-bl-2xl opacity-60" />
+			<div className="absolute bottom-4 right-4 w-8 h-8 border-r-4 border-b-4 border-amber-400 rounded-br-2xl opacity-60" />
+
+			<div className="p-8">
+				<div className="flex flex-col lg:flex-row lg:items-center gap-6">
+
+					<div className="shrink-0 relative w-full lg:w-72 h-56 lg:h-48">
+						<img
+							className="size-full object-cover rounded-2xl
+                border-4 border-amber-300/50 dark:border-amber-700/50
+                transition-all duration-700 ease-out
+                group-hover:scale-110 group-hover:rotate-2"
+
+							src={cocktail.imageUrl}
+							alt={'image of ' + cocktail.title}
+						/>
+						<div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-amber-200/10 rounded-2xl" />
+					</div>
+
+					<div className="flex-1 space-y-5">
+						<div className="relative">
+							<h3 className="text-2xl lg:text-3xl font-bold
+                bg-gradient-to-r from-amber-800 to-orange-700 dark:from-amber-300 dark:to-orange-300
+                bg-clip-text text-transparent
+                group-hover:from-amber-700 group-hover:to-orange-600
+                transition-all duration-300
+                font-serif tracking-wide
+                drop-shadow-sm"
+							>
+								{cocktail.title}
+							</h3>
+							<div className="absolute -bottom-1 left-0 w-16 h-1 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full" />
+						</div>
+
+						<p className="text-amber-900 dark:text-amber-100 leading-relaxed text-lg
+              font-serif italic
+              line-clamp-3"
+						>
+							{cocktail.description}
+						</p>
+
+						<div className="flex flex-wrap gap-3 pt-2">
+							{cocktail.tags.map((tag, index) => (
+								<span
+									key={index}
+									className="inline-flex items-center px-4 py-2
+                    text-sm font-semibold tracking-wide
+                    bg-gradient-to-r from-amber-200 to-orange-200
+                    dark:from-amber-800 dark:to-orange-800
+                  text-amber-800 dark:text-amber-200
+                    border-2 border-amber-300 dark:border-amber-700
+                    rounded-full shadow-md
+                    transition-all duration-300
+                    hover:shadow-lg hover:scale-105
+                    group-hover:bg-gradient-to-r group-hover:from-amber-300 group-hover:to-orange-300
+                    font-serif uppercase"
+								>
+									{tag}
+								</span>
+							))}
 						</div>
 					</div>
 
-					<div className="mt-4 sm:mt-8 lg:mt-0 md:min-h-[80dvh] flex flex-col md:h-[80dvh] px-4 sm:px-6 lg:px-8">
-							<div className="space-y-5 sm:space-y-7">
-
-							<div className="space-y-1 md:space-y-4">
-								<div className="flex items-center justify-between gap-3 sm:justify-center sm:text-center">
-									<h2 className="font-bold text-3xl lg:text-4xl text-gray-800 sm:text-center">
-										{cocktail.title}
-									</h2>
-									<button
-										onClick={onLikeBtnClick}
-										type="button"
-										className="p-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-red-300 bg-white text-red-600 hover:bg-red-50 focus:outline-hidden focus:ring-2 focus:ring-red-300 disabled:opacity-50 disabled:pointer-events-none"
-										aria-label={liked ? "Unlike" : "Like"}
-									>
-										{liked ? <HeartFill /> : <Heart />}
-									</button>
-								</div>
-								<ul className="text-sm text-gray-600 sm:text-center sm:justify-center mt-1 sm:mt-2">
-									<li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">
-										{cocktail.author}
-									</li>
-									<li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">
-										{cocktail.date.getFullYear()}
-									</li>
-								</ul>
-								<div className="flex flex-wrap sm:text-center sm:justify-center gap-2 mt-1 max-[500px]:mt-2">
-											{cocktail.tags.map((tag, idx) => (
-												<span key={`${cocktail.id}-tag-${idx}`} className="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800/30 dark:text-yellow-500">
-													{tag}
-												</span>
-											))}
-										</div>
-								<div className="mt-3 sm:mt-4">
-									<p className="text-gray-600 leading-relaxed mt-2">
-									{cocktail.description}
-								</p>
-								</div>
-							</div>
-
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
-								<div>
-									<h3 className="text-2xl dark:text-white mb-2 sm:mb-3">Ingredients</h3>
-									<ul className="w-full marker:text-blue-600 list-disc ps-5 mt-1 sm:mt-2 space-y-1.5 sm:space-y-2 text-sm text-gray-700 dark:text-neutral-300">
-										{
-											cocktail.ingredients.map((element, idx) => (
-												<li key={`${cocktail.id}-ingredient-${idx}`}>{element.name} {element.units} {element.measurementType}</li>
-											))
-										}
-									</ul>
-								</div>
-
-								<div>
-									<h3 className="text-2xl dark:text-white mb-2 sm:mb-3">Steps</h3>
-									<ol className="w-full marker:text-blue-600 list-decimal ps-5 mt-1 sm:mt-2 space-y-1.5 sm:space-y-2 text-sm text-gray-700 dark:text-neutral-300">
-										{
-											orderedSteps.map((step) => (
-												<li key={`${cocktail.id}-step-${step.order}`}>{step.description}</li>
-											))
-										}
-									</ol>
-								</div>
-							</div>
-
-						</div>
-					</div>
 				</div>
 			</div>
-		</>
+
+			<div className="absolute inset-0 opacity-5 pointer-events-none">
+				<div className="w-full h-full bg-[radial-gradient(circle_at_50%_50%,_transparent_40%,_rgba(180,83,9,0.1)_100%)]" />
+			</div>
+		</div>
 	);
 }

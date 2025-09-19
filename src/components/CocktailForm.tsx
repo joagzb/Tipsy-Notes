@@ -1,12 +1,12 @@
-import { useMemo, useState, useContext } from "react";
+import { useMemo, useState } from "react";
 import { type RecipeTag, type MeasurementType, RECIPE_TAGS } from "../models/Types";
 import type { ICocktail, ICocktailIngredient, ICocktailStep } from "../models/ICocktail";
 import { IngredientsFormEditor } from "./IngredientsFormEditor";
 import { StepsFormEditor } from "./StepsFormEditor";
-import { AppContext } from "../context/CocktailContext";
+import { UseGlobalState } from "../hooks/UseGlobalState";
 
 export function CocktailForm() {
-	const { createCocktail } = useContext(AppContext);
+	const { createCocktail } = UseGlobalState();
 
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -54,6 +54,7 @@ export function CocktailForm() {
 			description: description,
 			author: author,
 			date: (new Date()),
+			imageUrl: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // TODO: HARDCODED
 			glass: glass,
 			tags: parsedTags,
 			ingredients: ingredients,

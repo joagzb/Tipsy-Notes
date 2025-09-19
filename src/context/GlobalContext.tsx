@@ -2,18 +2,12 @@ import { createContext, useCallback, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import type { ICocktail } from "../models/ICocktail";
 import { cocktails as data } from "../repository/cocktails";
-
-type AppContextValues = {
-	cocktails: ICocktail[];
-	createCocktail: (newCocktail: ICocktail) => void;
-	onLikeToggleCocktail: (id: string, isLiked: boolean) => boolean;
-};
+import type { GlobalStateValues } from "./GlobalStateValues";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const AppContext = createContext<AppContextValues>({} as AppContextValues);
+export const GlobalContext = createContext<GlobalStateValues>({} as GlobalStateValues);
 
-export function AppContextProvider({ children }: { children: ReactNode }) {
-
+export function GlobalContextProvider({ children }: { children: ReactNode }) {
 	const [cocktails, setCocktails] = useState<ICocktail[]>([]);
 
 	const createCocktail = useCallback((newCocktail: ICocktail) => {
@@ -41,13 +35,14 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
 		setCocktails(data);
 	}, [])
 
+
 	return (
-		<AppContext.Provider value={{
+		<GlobalContext.Provider value={{
 			cocktails: cocktails,
 			createCocktail: createCocktail,
 			onLikeToggleCocktail: onLikeToggleCocktail,
 		}}>
 			{children}
-		</AppContext.Provider>
+		</GlobalContext.Provider>
 	);
 }
