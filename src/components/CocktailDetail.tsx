@@ -17,9 +17,9 @@ export function CocktailDetail() {
 		return <NotFound />;
 	}
 
-	const orderedSteps = useMemo(() => {
+	const orderSteps = () => {
 		return [...cocktail.steps].sort((a, b) => a.order - b.order);
-	}, [cocktail]);
+	};
 
 	const onLikeBtnClick = () => {
 		setLiked(!liked);
@@ -92,7 +92,7 @@ export function CocktailDetail() {
 									<h3 className="text-2xl dark:text-white mb-2 sm:mb-3">Steps</h3>
 									<ol className="w-full marker:text-blue-600 list-decimal ps-5 mt-1 sm:mt-2 space-y-1.5 sm:space-y-2 text-sm text-gray-700 dark:text-neutral-300">
 										{
-											orderedSteps.map((step) => (
+											orderSteps().map((step) => (
 												<li key={`${cocktail.id}-step-${step.order}`}>{step.description}</li>
 											))
 										}
