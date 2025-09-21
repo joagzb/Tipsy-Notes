@@ -10,14 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@preline/select": "^3.2.3",
-    "@preline/theme-switch": "^3.2.3",
     "@tailwindcss/vite": "^4.1.13",
-    "preline": "^3.2.3",
     "react": "^19.1.1",
     "react-bootstrap-icons": "^1.11.6",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1",
+    "react-select": "^5.10.2",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
