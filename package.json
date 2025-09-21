@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@preline/select": "^3.2.3",
+    "@preline/theme-switch": "^3.2.3",
     "@tailwindcss/vite": "^4.1.13",
     "preline": "^3.2.3",
     "react": "^19.1.1",

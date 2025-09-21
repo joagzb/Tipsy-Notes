@@ -1,14 +1,14 @@
 import type { ICocktail } from "../models/ICocktail";
-import { useNavigate } from "react-router-dom";
 
-export function CocktailCard({ cocktail }: { cocktail: ICocktail }) {
-	const navigate = useNavigate();
-	
-	const onCardClick = () => navigate(`/cocktails/${cocktail.id}`);
+export function CocktailCard({ cocktail, onClick }: { cocktail: ICocktail; onClick: () => void }) {
+
+	const onCardClick = (): void => {
+		onClick();
+	};
 
 	return (
 		<div onClick={onCardClick}
-		className="group relative overflow-hidden
+			className="group relative overflow-hidden
         bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20
         border-2 border-amber-200 dark:border-amber-800
         rounded-3xl shadow-xl hover:shadow-2xl

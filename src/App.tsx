@@ -4,7 +4,6 @@ import { CocktailForm } from "./components/CocktailForm";
 import { CocktailList } from "./components/CocktailList";
 import { NotFound } from "./components/NotFound";
 import './App.css'
-import { CocktailDetail } from "./components/CocktailDetail";
 
 async function loadPreline() {
 	return import('preline/dist/index.js');
@@ -32,7 +31,6 @@ function App() {
 				<Route path="/home" element={<CocktailList />} />
 				<Route path="/cocktails" element={<CocktailList />} />
 				<Route path="/cocktails/new" element={<CocktailForm />} />
-				<Route path="/cocktails/:id" element={<CocktailDetail />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>

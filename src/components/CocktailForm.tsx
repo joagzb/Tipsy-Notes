@@ -4,6 +4,7 @@ import type { ICocktail, ICocktailIngredient, ICocktailStep } from "../models/IC
 import { IngredientsFormEditor } from "./IngredientsFormEditor";
 import { StepsFormEditor } from "./StepsFormEditor";
 import { UseGlobalState } from "../hooks/UseGlobalState";
+import { Navbar } from "./Navbar";
 
 export function CocktailForm() {
 	const { createCocktail } = UseGlobalState();
@@ -69,6 +70,8 @@ export function CocktailForm() {
 
 	return (
 		<>
+			<Navbar />
+
 			<form onSubmit={onSubmitBtnClick}>
 				<input
 					type="text"

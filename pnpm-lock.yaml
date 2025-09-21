@@ -11,6 +11,9 @@ importers:
       '@preline/select':
         specifier: ^3.2.3
         version: 3.2.3
+      '@preline/theme-switch':
+        specifier: ^3.2.3
+        version: 3.2.3
       '@tailwindcss/vite':
         specifier: ^4.1.13
         version: 4.1.13(vite@7.1.5(jiti@2.5.1)(lightningcss@1.30.1))
@@ -325,6 +328,9 @@ packages:
 
   '@preline/select@3.2.3':
     resolution: {integrity: sha512-a9wk4khZJHJh1BYfhcvX2eaKtBwY/J8GSzQveogNrdMNIwEtQpsbzK6DvHoxsv3pwwREQmJt9Hoc5v6ZLf7pPQ==}
+
+  '@preline/theme-switch@3.2.3':
+    resolution: {integrity: sha512-7SkmLxkYo2q7NMRnVedMxHk6OAbEOUsZFhGXfBHDgXZxxbZYiAlG4VALCO1Sh6HLybRjFOJP6or9CZTDdpCBgA==}
 
   '@rolldown/pluginutils@1.0.0-beta.32':
     resolution: {integrity: sha512-QReCdvxiUZAPkvp1xpAg62IeNzykOFA6syH2CnClif4YmALN1XKpB39XneL80008UbtMShthSVDKmrx05N1q/g==}
@@ -1564,6 +1570,8 @@ snapshots:
       fastq: 1.19.1
 
   '@preline/select@3.2.3': {}
+
+  '@preline/theme-switch@3.2.3': {}
 
   '@rolldown/pluginutils@1.0.0-beta.32': {}
 
