@@ -3,7 +3,13 @@ import { UseGlobalState } from "../hooks/UseGlobalState";
 import type { ICocktail } from "../models/ICocktail";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 
-export function CardDetailModal({ cocktail, open, onRequestClose }: { cocktail: ICocktail; open?: boolean; onRequestClose: () => void }) {
+interface CocktailModalProps {
+	cocktail: ICocktail;
+	open: boolean;
+	onRequestClose: () => void;
+}
+
+export function CardDetailModal({ cocktail, open, onRequestClose }: CocktailModalProps) {
 	const { onLikeToggleCocktail } = UseGlobalState();
 
 	const [liked, setLiked] = useState(false);
@@ -17,91 +23,228 @@ export function CardDetailModal({ cocktail, open, onRequestClose }: { cocktail: 
 		onLikeToggleCocktail(cocktail.id, !liked);
 	};
 
+	const handleBackdropClick = (e: React.MouseEvent) => {
+		if (e.target === e.currentTarget) {
+			onRequestClose();
+		}
+	};
+
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-			<div className="absolute inset-0 bg-black/50" onClick={onRequestClose} />
+		<div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 backdrop-blur-sm"
+			onClick={handleBackdropClick}
+		>
+      <div className="relative w-full max-w-6xl max-h-[95vh] overflow-hidden">
+				<div className="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 dark:from-amber-900/20 dark:via-orange-900/20 dark:to-amber-900/20 rounded-lg shadow-2xl border-8 border-amber-800/30 relative overflow-y-auto max-h-[95vh]">
 
-			<div className="relative z-10 w-full sm:max-w-4xl max-h-[calc(100vh-56px)] bg-white border border-gray-200 shadow-2xl rounded-2xl overflow-y-auto dark:bg-neutral-900 dark:border-neutral-800">
-				<div className="flex justify-end items-center py-3 px-4 border-b border-gray-200 dark:border-neutral-800">
-					<button
-						type="button"
-						onClick={onRequestClose}
-						className="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600"
-						aria-label="Close"
+					<div className="absolute top-4 left-4 w-8 h-8 lg:border-l-4 lg:border-t-4 lg:border-amber-800/40 lg:rounded-tl-lg" />
+					<div className="absolute bottom-4 right-4 w-8 h-8 lg:border-r-4 lg:border-b-4 lg:border-amber-800/40 lg:rounded-br-lg" />
+
+					<button onClick={onRequestClose}
+						className="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-amber-800/10 hover:bg-amber-800/20 transition-colors border border-amber-800/30"
 					>
-						<span className="sr-only">Close</span>
-						<svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+						<svg className="w-4 h-4 text-amber-800 dark:text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+						</svg>
 					</button>
-				</div>
 
-				<div className="max-w-[85rem] px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14 mx-auto">
-					<div className="md:grid md:grid-cols-2 md:items-stretch md:gap-6 xl:gap-12">
-
-						<div className="px-0 sm:px-6 lg:px-8 ">
-							<div className="h-64 sm:h-72 md:h-[80dvh] flex flex-col bg-[url('https://images.unsplash.com/photo-1462917882517-e150004895fa?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat rounded-2xl">
-								<div className="mt-auto w-2/3 md:max-w-lg ps-5 pb-5 md:ps-10 md:pb-10" />
-							</div>
-						</div>
-
-						<div className="mt-4 sm:mt-8 lg:mt-0 md:min-h-[80dvh] flex flex-col md:h-[80dvh] px-4 sm:px-6 lg:px-8">
-							<div className="space-y-5 sm:space-y-7">
-
-								<div className="space-y-1 md:space-y-4">
-									<div className="flex items-center justify-between gap-3 sm:justify-center sm:text-center">
-										<h2 className="font-bold text-3xl lg:text-4xl text-gray-800 sm:text-center">
+					<div className="p-6 sm:p-8 lg:p-12">
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start lg:max-h-[40vh]">
+							<div className="space-y-8">
+                <div className="text-center border-b-2 border-amber-800/30 pb-4">
+									<div className="flex items-center justify-center gap-2 mb-2">
+										<h1 className="text-4xl font-serif text-amber-900 dark:text-amber-100 tracking-wide">
 											{cocktail.title}
-										</h2>
-										<button
-											onClick={onLikeBtnClick}
-											type="button"
-											className="p-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-red-300 bg-white text-red-600 hover:bg-red-50 focus:outline-hidden focus:ring-2 focus:ring-red-300 disabled:opacity-50 disabled:pointer-events-none"
-											aria-label={liked ? "Unlike" : "Like"}
+										</h1>
+										<button onClick={onLikeBtnClick}
+											className="flex items-center gap-2 px-3 py-1 text-red-600 hover:text-red-700 transition-colors bg-amber-100/50 dark:bg-amber-900/20 rounded-full border border-red-300/50"
 										>
-											{liked ? <HeartFill /> : <Heart />}
+											{liked ? <HeartFill className="w-5 h-5" /> : <Heart className="w-5 h-5" />}
+											<span className="text-sm font-medium">{cocktail.likes}</span>
 										</button>
 									</div>
-									<ul className="text-sm text-gray-600 sm:text-center sm:justify-center mt-1 sm:mt-2">
-										<li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">
-											{cocktail.author}
-										</li>
-										<li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">
-											{cocktail.date.getFullYear()}
-										</li>
-									</ul>
-									<div className="flex flex-wrap sm:text-center sm:justify-center gap-2 mt-1 max-[500px]:mt-2">
+									<p className="text-amber-800/80 dark:text-amber-200/80 italic font-serif text-md">
+										{cocktail.author} • {cocktail.date.getFullYear()}
+									</p>
+									<div className="flex flex-wrap justify-center gap-2 mt-4">
 										{cocktail.tags.map((tag, idx) => (
-											<span key={`${cocktail.id}-tag-${idx}`} className="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800/30 dark:text-yellow-500">
+											<span
+												key={`${cocktail.id}-tag-${idx}`}
+												className="px-4 py-2 bg-amber-200/60 dark:bg-amber-800/40 text-amber-900 dark:text-amber-100 text-sm font-medium rounded-full border border-amber-300/50 font-serif"
+											>
 												{tag}
 											</span>
 										))}
 									</div>
-									<div className="mt-3 sm:mt-4">
-										<p className="text-gray-600 leading-relaxed mt-2">
-											{cocktail.description}
-										</p>
-									</div>
 								</div>
 
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
-									<div>
-										<h3 className="text-2xl dark:text-white mb-2 sm:mb-3">Ingredients</h3>
-										<ul className="w-full marker:text-blue-600 list-disc ps-5 mt-1 sm:mt-2 space-y-1.5 sm:space-y-2 text-sm text-gray-700 dark:text-neutral-300">
-											{cocktail.ingredients.map((element, idx) => (
-												<li key={`${cocktail.id}-ingredient-${idx}`}>{element.name} {element.units} {element.measurementType}</li>
-											))}
-										</ul>
-									</div>
-
-									<div>
-										<h3 className="text-2xl dark:text-white mb-2 sm:mb-3">Steps</h3>
-										<ol className="w-full marker:text-blue-600 list-decimal ps-5 mt-1 sm:mt-2 space-y-1.5 sm:space-y-2 text-sm text-gray-700 dark:text-neutral-300">
-											{orderSteps().map((step) => (
-												<li key={`${cocktail.id}-step-${step.order}`}>{step.description}</li>
-											))}
-										</ol>
-									</div>
+                <div className="text-center px-4">
+									<p className="text-amber-800 dark:text-amber-200 font-serif italic leading-relaxed text-md">
+										"{cocktail.description}"
+									</p>
 								</div>
 
+                <div className="text-center px-4">
+									{cocktail.glass && (
+										<div className="text-center py-4 bg-amber-100/30 dark:bg-amber-900/10 rounded-lg border-2 border-amber-200/30">
+											<span className="text-amber-800 dark:text-amber-200 font-serif text-lg">
+												Serve in: <em className="font-bold">{cocktail.glass}</em>
+											</span>
+										</div>
+									)}
+								</div>
+
+
+							</div>
+							<div className="flex items-center justify-center">
+								<div className="relative">
+									<img
+										src={cocktail.imageUrl}
+										alt={cocktail.title + ' image'}
+										className="max-w-xs h-48 object-cover rounded-2xl shadow-2xl border-4 border-amber-800/40"
+									/>
+									<div className="absolute -inset-3 border-2 border-amber-800/20 rounded-2xl pointer-events-none" />
+								</div>
+							</div>
+
+						</div>
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-4 lg:items-start lg:max-h-[60vh]">
+              <div>
+                <h2 className="text-2xl font-serif text-amber-900 dark:text-amber-100 text-center mb-4 tracking-wide">
+                  ~ Ingredients ~
+                </h2>
+                <div className="space-y-3">
+                  {cocktail.ingredients.map((ingredient, idx) => (
+                    <div
+                      key={`${cocktail.id}-ingredient-${idx}`}
+                      className="flex justify-between items-center h-16 px-5 bg-amber-100/50 dark:bg-amber-900/20 rounded-lg border border-amber-200/50"
+                    >
+                      <span className="font-serif text-amber-900 dark:text-amber-100 text-lg truncate pr-4">
+                        {ingredient.name}
+                      </span>
+                      <span className="text-amber-700 dark:text-amber-300 font-medium font-serif whitespace-nowrap">
+                        {ingredient.units} {ingredient.measurementType}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-serif text-amber-900 dark:text-amber-100 text-center mb-4 tracking-wide">
+                  ~ Preparation ~
+                </h2>
+                <div className="space-y-3">
+                  {orderSteps().map((step, idx) => (
+                    <div
+                      key={`${cocktail.id}-step-${step.order}`}
+                      className="flex items-center gap-4 h-16 px-5 bg-amber-100/50 dark:bg-amber-900/20 rounded-lg border border-amber-200/50"
+                    >
+                      <span className="flex-shrink-0 w-10 h-10 bg-amber-800/20 text-amber-900 dark:text-amber-100 rounded-full flex items-center justify-center font-serif font-bold text-lg border-2 border-amber-800/30">
+                        {idx + 1}
+                      </span>
+                      <p className="text-amber-800 dark:text-amber-200 font-serif leading-relaxed text-lg truncate">
+                        {step.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+						<div className="lg:hidden space-y-6">
+							<div className="text-center border-b-2 border-amber-800/30 pb-4">
+								<div className="flex items-center justify-center gap-3 mb-2 flex-wrap">
+									<h1 className="text-3xl sm:text-4xl font-serif text-amber-900 dark:text-amber-100 tracking-wide">
+										{cocktail.title}
+									</h1>
+									<button
+										onClick={onLikeBtnClick}
+										className="flex items-center gap-1 px-2 py-1 text-red-600 hover:text-red-700 transition-colors bg-amber-100/50 dark:bg-amber-900/20 rounded-full border border-red-300/50"
+									>
+										{liked ? <HeartFill className="w-5 h-5" /> : <Heart className="w-5 h-5" />}
+										<span className="text-xs font-medium">{cocktail.likes}</span>
+									</button>
+								</div>
+								<p className="text-amber-800/80 dark:text-amber-200/80 italic font-serif">
+									By {cocktail.author} • {cocktail.date.getFullYear()}
+								</p>
+								<div className="flex flex-wrap justify-center gap-2 mt-3">
+									{cocktail.tags.map((tag, idx) => (
+										<span
+											key={`${cocktail.id}-tag-${idx}`}
+											className="px-3 py-1 bg-amber-200/50 dark:bg-amber-800/30 text-amber-900 dark:text-amber-100 text-xs font-medium rounded-full border border-amber-300/50 font-serif"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
+							</div>
+
+							<div className="flex justify-center">
+								<div className="relative">
+                  <img
+                    src={cocktail.imageUrl}
+                    alt={cocktail.title + ' image'}
+                    className="w-full max-w-xs h-48 object-cover rounded-xl shadow-xl border-4 border-amber-800/40"
+                  />
+									<div className="absolute -inset-2 border-2 border-amber-800/20 rounded-xl pointer-events-none" />
+								</div>
+							</div>
+
+							<div className="text-center">
+								<p className="text-amber-800 dark:text-amber-200 font-serif italic leading-relaxed">
+									"{cocktail.description}"
+								</p>
+							</div>
+
+							<div>
+								<h2 className="text-xl font-serif text-amber-900 dark:text-amber-100 text-center mb-3 tracking-wide">
+									~ Ingredients ~
+								</h2>
+								<div className="space-y-2">
+									{cocktail.ingredients.map((ingredient, idx) => (
+										<div
+											key={`${cocktail.id}-ingredient-${idx}`}
+											className="flex justify-between items-center py-2 px-4 bg-amber-100/50 dark:bg-amber-900/20 rounded-lg border border-amber-200/50"
+										>
+											<span className="font-serif text-amber-900 dark:text-amber-100">
+												{ingredient.name}
+											</span>
+											<span className="text-amber-700 dark:text-amber-300 font-medium font-serif text-sm">
+												{ingredient.units} {ingredient.measurementType}
+											</span>
+										</div>
+									))}
+								</div>
+							</div>
+
+							{cocktail.glass && (
+								<div className="text-center py-3 bg-amber-100/30 dark:bg-amber-900/10 rounded-lg border border-amber-200/30">
+									<span className="text-amber-800 dark:text-amber-200 font-serif">
+										Serve in: <em>{cocktail.glass}</em>
+									</span>
+								</div>
+							)}
+
+							<div>
+								<h2 className="text-xl font-serif text-amber-900 dark:text-amber-100 text-center mb-3 tracking-wide">
+									~ Preparation ~
+								</h2>
+								<div className="space-y-3">
+                  {orderSteps().map((step, idx) => (
+                    <div
+                      key={`${cocktail.id}-step-${step.order}`}
+                      className="flex gap-3 p-3 h-14 bg-amber-50/50 dark:bg-amber-900/10 rounded-lg border border-amber-200/30"
+                    >
+                      <span className="flex-shrink-0 w-8 h-8 bg-amber-800/20 text-amber-900 dark:text-amber-100 rounded-full flex items-center justify-center font-serif font-bold text-sm border border-amber-800/30">
+                        {idx + 1}
+                      </span>
+                      <p className="text-amber-800 dark:text-amber-200 font-serif leading-relaxed text-sm truncate">
+                        {step.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
 							</div>
 						</div>
 					</div>

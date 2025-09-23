@@ -1,7 +1,12 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { ICocktailStep } from "../models/ICocktail";
 
-export function StepsFormEditor({ steps, setSteps, }: { steps: ICocktailStep[]; setSteps: Dispatch<SetStateAction<ICocktailStep[]>>; }) {
+interface IStepsFormEditorProps {
+	steps: ICocktailStep[];
+	setSteps: Dispatch<SetStateAction<ICocktailStep[]>>;
+}
+
+export function StepsFormEditor({ steps, setSteps, }: IStepsFormEditorProps) {
 
 	const addStep = (): void => {
 		setSteps((existingSteps) => [

@@ -1,6 +1,11 @@
 import type { ICocktail } from "../models/ICocktail";
 
-export function CocktailCard({ cocktail, onClick }: { cocktail: ICocktail; onClick: () => void }) {
+interface ICockailCardProps {
+	cocktail: ICocktail;
+	onClick: () => void;
+}
+
+export function CocktailCard({ cocktail, onClick }: ICockailCardProps) {
 
 	const onCardClick = (): void => {
 		onClick();

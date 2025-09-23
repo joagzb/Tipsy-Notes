@@ -2,7 +2,12 @@ import type { Dispatch, SetStateAction } from "react";
 import type { MeasurementType } from "../models/Types";
 import type { ICocktailIngredient } from "../models/ICocktail";
 
-export function IngredientsFormEditor({ ingredients, setIngredients }: { ingredients: ICocktailIngredient[]; setIngredients: Dispatch<SetStateAction<ICocktailIngredient[]>> }) {
+interface IIngredientsFormEditorProps {
+	ingredients: ICocktailIngredient[];
+	setIngredients: Dispatch<SetStateAction<ICocktailIngredient[]>>;
+}
+
+export function IngredientsFormEditor({ ingredients, setIngredients }: IIngredientsFormEditorProps) {
 
 	const addIngredient = (): void => {
 		setIngredients((existing) => [
