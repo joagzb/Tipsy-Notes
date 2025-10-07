@@ -24,8 +24,8 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
 			updated = true;
 			const next = [...existing];
 			const found = next[idx];
-			const likes = isLiked ? found.likes + 1 : Math.max(0, found.likes - 1);
-			next[idx] = { ...found, likes };
+			const likes = isLiked ? found.likeCounter + 1 : Math.max(0, found.likeCounter - 1);
+			next[idx] = { ...found, likeCounter: likes, liked: isLiked };
 			return next;
 		});
 		return updated;

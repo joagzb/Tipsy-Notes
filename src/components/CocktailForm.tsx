@@ -63,7 +63,8 @@ export function CocktailForm() {
 			tags: parsedTags,
 			ingredients: ingredients,
 			steps: steps,
-			likes: 0,
+			likeCounter: 0,
+			liked: false,
 		};
 
 		createCocktail(newCocktail);

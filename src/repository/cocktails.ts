@@ -25,7 +25,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 5, description: "(Optional) Place a small nougat bar across the rim of the glass as an edible garnish" },
 			{ order: 6, description: "(Optional) Drizzle a tiny heart shape onto the foam using a thin stream of honey, similar to latte art" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "2o8f73hdncsdsdmnfb82oh",
@@ -48,7 +48,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 4, description: "Double strain into a chilled cocktail glass." },
 			{ order: 5, description: "Garnish with a lime wheel or twist." }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "03q9foc48qyrhnhmkcvvzx",
@@ -70,7 +70,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Stir gently to chill and dilute slightly." },
 			{ order: 4, description: "Garnish with an orange slice or orange peel." }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "089cfq3274yhnisanofd",
@@ -93,7 +93,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Top with club soda" },
 			{ order: 4, description: "Garnish with a lemon slice and a cherry" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "qo827HNgdfghfdhedrXWXFS",
@@ -116,7 +116,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Strain into a rocks glass filled with fresh ice" },
 			{ order: 4, description: "Garnish with a lemon slice (optional)" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "p09zs8uhncfegfghngxbv",
@@ -138,7 +138,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Stir gently" },
 			{ order: 4, description: "Garnish with two lime wedges" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "jkxzchias65htiftiafg",
@@ -160,7 +160,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 2, description: "Fine strain into a chilled cocktail (martini) glass" },
 			{ order: 3, description: "Garnish with a cherry" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "iozhsu67fhcnbgklyhfnlihzg",
@@ -183,7 +183,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Strain into a rocks (old fashioned) glass filled with ice" },
 			{ order: 4, description: "Garnish with a cherry and a lemon wedge" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "d6f8gv74j84jb68j4cfjkgh",
@@ -206,7 +206,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Add bourbon and ice, stir gently until chilled and slightly diluted" },
 			{ order: 4, description: "Garnish with an orange twist (and cherry if desired)" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "a39854fgjcf8tg4lk4lkd",
@@ -228,7 +228,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Fine strain into a chilled cocktail glass (martini style)" },
 			{ order: 4, description: "Garnish with a cherry" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "kmf6586t7i7468dv4fnsedr",
@@ -253,7 +253,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 4, description: "Top with soda water and stir gently" },
 			{ order: 5, description: "Garnish with a mint sprig" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "mkop8678ty48jdv4tndsfng",
@@ -277,7 +277,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Top with cola and bitters" },
 			{ order: 4, description: "Stir gently and garnish with a lime slice" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "6897f647tisdrths8ejhcg",
@@ -298,7 +298,7 @@ export const cocktails: ICocktail[] = [
 			{ order: 2, description: "Strain into a margarita glass with salted rim" },
 			{ order: 3, description: "Garnish with a lime slice" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 	{
 		id: "89v44w55hvd6fthxzdf87whxhf",
@@ -320,6 +320,6 @@ export const cocktails: ICocktail[] = [
 			{ order: 3, description: "Slowly pour grenadine over to create sunrise effect" },
 			{ order: 4, description: "Garnish with an orange slice and a cherry" }
 		],
-		likes: 0
+		likeCounter: 0
 	},
 ];

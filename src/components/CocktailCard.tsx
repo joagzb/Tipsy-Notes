@@ -13,7 +13,7 @@ export function CocktailCard({ cocktail, onClick }: ICockailCardProps) {
 
 	return (
 		<div onClick={onCardClick}
-			className="group relative overflow-hidden
+			className="group relative overflow-hidden w-fit
         bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20
         border-2 border-amber-200 dark:border-amber-800
         rounded-3xl shadow-xl hover:shadow-2xl
@@ -26,9 +26,9 @@ export function CocktailCard({ cocktail, onClick }: ICockailCardProps) {
 			<div className="absolute bottom-4 right-4 w-8 h-8 border-r-4 border-b-4 border-amber-400 rounded-br-2xl opacity-60" />
 
 			<div className="p-8">
-				<div className="flex flex-col lg:flex-row lg:items-center gap-6">
+				<div className="flex flex-col gap-6 lg:w-54">
 
-					<div className="shrink-0 relative w-full lg:w-72 h-56 lg:h-48">
+					<div className="shrink-0 relative w-full h-56 md:w-54">
 						<img
 							className="size-full object-cover rounded-2xl
                 border-4 border-amber-300/50 dark:border-amber-700/50

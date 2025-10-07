@@ -11,7 +11,8 @@ export interface ICocktail {
 	tags: RecipeCategory[],
 	ingredients: ICocktailIngredient[]
 	steps: ICocktailStep[],
-	likes: number,
+	likeCounter: number,
+	liked: boolean,
 }
 
 export interface ICocktailStep {
